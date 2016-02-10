@@ -5,7 +5,7 @@
  *
  * @file Code_500.php
  *
- * @author Denis Nochevkin <dnochevkin@woman.ru>
+ * @author Denis Alexandrov <stm.switcher@gmail.com>
  * @date 05.02.2016
  */
 
