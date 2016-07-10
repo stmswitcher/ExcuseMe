@@ -49,7 +49,7 @@ class ExcuseMe
         $this->messages_folder = __DIR__ . "/messages/$locale/";
 
         if (!file_exists($this->messages_folder))
-            throw new \Exception(500, 'Locale not found');
+            $this->locale = self::DEFAULT_LOCALE;
 
         $this->locale = $locale;
     }
@@ -62,6 +62,9 @@ class ExcuseMe
      */
     public function forCode($code = self::DEFAULT_CODE)
     {
+        if (!file_exists($this->messages_folder . "Code_$code.php"))
+            $code = self::DEFAULT_CODE;
+
         $messages = require($this->messages_folder . "Code_$code.php");
 
         return $messages[array_rand($messages)];
@@ -77,6 +80,14 @@ class ExcuseMe
      */
     public static function getMessage($locale = self::DEFAULT_LOCALE, $code = self::DEFAULT_CODE)
     {
+        $locale = strtolower($locale);
+
+        if (!file_exists(__DIR__ . "/messages/$locale/"))
+            $locale = self::DEFAULT_LOCALE;
+
+        if (!file_exists(__DIR__ . "/messages/$locale/Code_$code.php"))
+            $code = self::DEFAULT_CODE;
+
         $messages = require(__DIR__ . "/messages/$locale/Code_$code.php");
 
         return $messages[array_rand($messages)];
