@@ -3,7 +3,7 @@ Error message generator based on programmers' excuses.
 
 #Installation via composer:
 ```
-php composer.phar require "stmswitcher/excuseme:@dev"
+composer require "stmswitcher/excuseme:0.1" --dev
 ```
 
 #Usage
